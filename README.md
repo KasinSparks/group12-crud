@@ -2,17 +2,14 @@
 The semester group project for CIS4301
 
 # Using Docker to Set up Instance
-TODO:
+docker build --tag=[image_name]:[version.minor_version] . (do not forget the dot at the end)
+docker container run --name=[container_name] --net host -it [image_name]:[version.minor_version]
 
-# Running The Program
-## Linux/unix Systems
+## Running The Program
 1. cd backend
 2. npm start &
 3. cd frontend
 4. npm start &
-
-## Windows
-TODO:
 
 
 # Contributing
