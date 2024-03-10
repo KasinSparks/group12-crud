@@ -11,7 +11,7 @@ ChartJS.register(ArcElement, Tooltip, Legend);
 // https://react.dev/learn/conditional-rendering
 function TestAPIConnection({ apiRes }) {
     if (apiRes !== "") {
-        return <p color="red" className="App-intro">{ apiRes }</p>;
+        return <p color="green" className="App-intro">{ apiRes }</p>;
     }
 
     return <p color="red" className="App-intro">NO CONNECTION TO BACKEND API</p>;
