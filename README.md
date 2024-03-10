@@ -2,10 +2,12 @@
 The semester group project for CIS4301
 
 # Using Docker to Set up Instance
-docker build --tag=[image_name]:[version.minor_version] . (do not forget the dot at the end)
-docker container run --name=[container_name] --net host -it [image_name]:[version.minor_version]
+1. docker build --tag=[image_name]:[version.minor_version] . (do not forget the dot at the end)
+
+2. docker container run --name=[container_name] --net host -it [image_name]:[version.minor_version]
 
 ## Running The Program
+0. Change into the main directory (group12-crud)
 1. cd backend
 2. npm start &
 3. cd frontend
@@ -13,7 +15,7 @@ docker container run --name=[container_name] --net host -it [image_name]:[versio
 
 
 # Contributing
-*A prefered method to make contributions is fork, feature-branch, and PR. This method is the most common across open-source projects on GitHub.*
+*A preferred method to make contributions is fork, feature-branch, and PR. This method is the most common across open-source projects on GitHub.*
 
 *The contributing procedure below is from the [Jellyfin project](https://github.com/jellyfin), but slightly modified to the needs of this repo. https://jellyfin.org/docs/general/contributing/development#how-should-you-make-changes*
 
