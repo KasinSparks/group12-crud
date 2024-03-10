@@ -12,7 +12,24 @@ The semester group project for CIS4301
 2. npm start &
 3. cd frontend
 4. npm start &
+5. Connect to the site using localhost:3000
+6. (backend site address is localhost:8000)
 
+# Setup The Connecting Details to The Database
+1. Create a file called dbConfig.js in the backend directory. (If file does not already exist) (DO NOT Check in this file into git!)
+2. Copy the following into dbConfig.js
+
+   ```
+   const config = {
+       user          : "",
+       password      : "",
+       connectString : "oracle.cise.ufl.edu:1521/orcl"
+   };
+
+   module.exports = config;
+   ```
+
+3. Enter your username and password inside the empty quotes for the CISE Oracle database session.
 
 # Contributing
 *A preferred method to make contributions is fork, feature-branch, and PR. This method is the most common across open-source projects on GitHub.*
