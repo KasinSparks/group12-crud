@@ -1,5 +1,19 @@
 # cis4301_group12
-The semester group project for CIS4301 
+The semester group project for CIS4301
+
+# Using Docker to Set up Instance
+TODO:
+
+# Running The Program
+## Linux/unix Systems
+1. cd backend
+2. npm start &
+3. cd frontend
+4. npm start &
+
+## Windows
+TODO:
+
 
 # Contributing
 *A prefered method to make contributions is fork, feature-branch, and PR. This method is the most common across open-source projects on GitHub.*
