@@ -4,7 +4,7 @@ The semester group project for CIS4301
 # Using Docker to Set up Instance
 1. docker build --tag=[image_name]:[version.minor_version] . (do not forget the dot at the end)
 
-2. docker container run --name=[container_name] --net host -it [image_name]:[version.minor_version]
+2. docker container run --name=[container_name] --net=host -it [image_name]:[version.minor_version]
 
 ## Running The Program
 0. Change into the main directory (group12-crud)
