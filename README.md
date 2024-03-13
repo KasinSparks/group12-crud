@@ -1,19 +1,37 @@
 # cis4301_group12
 The semester group project for CIS4301
 
-# Using Docker to Set up Instance
-1. docker build --tag=[image_name]:[version.minor_version] . (do not forget the dot at the end)
+# Project Setup
+## Using Docker to Set up Instance
+1. `docker build --tag=[image_name]:[version.minor_version] .` (do not forget the dot at the end)
 
-2. docker container run --name=[container_name] --net=host -it [image_name]:[version.minor_version]
+2. `docker container run --name=[container_name] --net=host -it [image_name]:[version.minor_version]`
 
-## Running The Program
+## Using Windows, Mac, or Linux
+1. Install git
+2. Install NodeJS
+   
+3. `git clone https://github.com/kasinsparks/group12-crud`
+4. `cd group12-crud`
+5. `cd frontend`
+6. `npm install`
+7. `cd ..`
+8. `cd backend`
+9. `npm install`
+10. `cd ..`
+
+# Running The Program
 0. Change into the main directory (group12-crud)
-1. cd backend
-2. npm start &
-3. cd frontend
-4. npm start &
-5. Connect to the site using localhost:3000
-6. (backend site address is localhost:8000)
+1. `cd backend`
+2. `npm start`
+   
+3. In a separate terminal, change into the main directory (group12-crud) and run the following commands
+4. `cd frontend`
+5. `npm start`
+
+
+* Connect to the site using localhost:3000
+* (backend site address is localhost:8000)
 
 # Setup The Connecting Details to The Database
 1. Create a file called dbConfig.js in the backend directory. (If file does not already exist) (DO NOT Check in this file into git!)
@@ -30,6 +48,8 @@ The semester group project for CIS4301
    ```
 
 3. Enter your username and password inside the empty quotes for the CISE Oracle database session.
+
+NOTE: You must connect to the UF network via VPN to access the database.
 
 # Contributing
 *A preferred method to make contributions is fork, feature-branch, and PR. This method is the most common across open-source projects on GitHub.*
