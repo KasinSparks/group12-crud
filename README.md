@@ -31,7 +31,7 @@ The semester group project for CIS4301
 
 
 * Connect to the site using localhost:3000
-* (backend site address is localhost:8000)
+* (backend site address is localhost:8080)
 
 # Setup The Connecting Details to The Database
 1. Create a file called dbConfig.js in the backend directory. (If file does not already exist) (DO NOT Check in this file into git!)
