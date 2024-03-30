@@ -2,10 +2,7 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 
-import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
-import { Doughnut } from 'react-chartjs-2';
-ChartJS.register(ArcElement, Tooltip, Legend);
-
+import TimeOfYearQuery from './monthOfYearQuerys.js';
 
 
 // https://react.dev/learn/conditional-rendering
@@ -22,29 +19,8 @@ class App extends Component {
     constructor(props) {
         super(props);
         this.state = {apiResponse: "" };
-        
-        // Used as an example for Chart.js
-        this.data = {
-          labels: ['Red', 'Blue', 'Yellow'],
-          datasets: [
-            {
-              label: '# of Votes',
-              data: [42, 314, 217],
-              backgroundColor: [
-                'rgba(255,  99, 132, 0.5)',
-                'rgba( 54, 162, 235, 0.5)',
-                'rgba(255, 206,  86, 0.5)',
-              ],
-              borderColor: [
-                'rgba(255,  99, 132, 1)',
-                'rgba( 54, 162, 235, 1)',
-                'rgba(255, 206,  86, 1)',
-              ],
-              borderWidth: 1,
-            },
-          ],
-        }
     }
+        
     
     // Used as an example to test connection to the API backend
     callAPI() {
@@ -78,7 +54,7 @@ class App extends Component {
             <TestAPIConnection
               apiRes={this.state.apiResponse} 
             />
-            <Doughnut data={this.data} />
+            <TimeOfYearQuery /> 
           </header>
         </div>
       );

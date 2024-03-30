@@ -11,12 +11,28 @@ async function run() {
     const connection = await oracledb.getConnection (dbConfig);
 
     const result = await connection.execute(
-        `SELECT *
-         FROM City`,
+        `SELECT SalesDate, Count(*), Avg(AvgTemp), Avg(SnowDepth)
+         FROM CISRealEstateSale
+         INNER JOIN CISRealEstateSalesDate ON CISRealEstateSale.SalesID = CISRealEstateSalesDate.SalesID
+         INNER JOIN CISWeatherSample ON CISWeatherSample.DateRec = CISRealEstateSalesDate.SalesDate
+         INNER JOIN 
+         ((SELECT SalesID, Type
+           FROM CISResidential)
+           UNION 
+           (SELECT SalesID, Type
+           FROM CISBusiness)) e1
+           ON e1.SalesID = CISRealEstateSale.SalesID
+         WHERE CISRealEstateSalesDate.SalesDate = CISWeatherSample.DateRec
+         GROUP BY SalesDate
+         ORDER BY SalesDate DESC`
     );
+
+
 
     console.log(result.rows);
     await connection.close();
+    return await result.rows;
 }
 
-run();
+//run();
+module.exports = run;
