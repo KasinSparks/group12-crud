@@ -24,7 +24,9 @@ class App extends Component {
     
     // Used as an example to test connection to the API backend
     callAPI() {
-        fetch("http://localhost:8080/test")
+        // TODO: Change back to localhost
+        //fetch("http://localhost:8080/test")
+        fetch("http://192.168.20.2:8080/test")
             .then(res => res.text())
             .then(res => this.setState({ apiResponse: res }))
             .catch(err => err);
