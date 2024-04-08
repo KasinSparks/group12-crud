@@ -28,6 +28,21 @@ router.get('/types', function(req, res, next) {
     });
 });
 
+// TODO: Move function out of this module and into it's own
+/* http://localhost:8080/queries/monthofyear/cites */
+// Sends an array of the different types of Real Estate properties
+router.get('/cities', function(req, res, next) {
+    var querystr = 
+            `SELECT DISTINCT City 
+             FROM CISLocation
+             ORDER BY City DESC`;
+
+    run(querystr)
+        .then(rows => {
+        res.send(rows);
+    });
+});
+
 /* http://localhost:8080/queries/monthofyear/avgsales */
 // NOTE: Do NOT use a production environment. Does not defend against SQL
 //       injection attacks. 
@@ -37,17 +52,18 @@ router.get('/avgsales', function(req, res, next) {
     // The dynamic query string
     var querystr = 
             `SELECT SalesDate, Count(CISRealEstateSale.SalesID), AVG(SoldValue), Avg(AvgTemp), Avg(SnowDepth), Avg(Precipitation)
-             FROM CISRealEstateSale
-             INNER JOIN CISRealEstateSalesDate ON CISRealEstateSale.SalesID = CISRealEstateSalesDate.SalesID
-             INNER JOIN CISWeatherSample ON CISWeatherSample.DateRec = CISRealEstateSalesDate.SalesDate
+             FROM KASINSPARKS.CISRealEstateSale
+             INNER JOIN KASINSPARKS.CISRealEstateSalesDate ON KASINSPARKS.CISRealEstateSale.SalesID = KASINSPARKS.CISRealEstateSalesDate.SalesID
+             INNER JOIN KASINSPARKS.CISLocation ON KASINSPARKS.CISRealEstateSale.LocatedAt = KASINSPARKS.CISLocation.LocationID
+             INNER JOIN KASINSPARKS.CISWeatherSample ON KASINSPARKS.CISWeatherSample.DateRec = KASINSPARKS.CISRealEstateSalesDate.SalesDate
              INNER JOIN 
              ((SELECT SalesID, Type
-               FROM CISResidential)
+               FROM KASINSPARKS.CISResidential)
                UNION 
                (SELECT SalesID, Type
-               FROM CISBusiness)) e1
-               ON e1.SalesID = CISRealEstateSale.SalesID
-             WHERE CISRealEstateSalesDate.SalesDate = CISWeatherSample.DateRec`;
+               FROM KASINSPARKS.CISBusiness)) e1
+               ON e1.SalesID = KASINSPARKS.CISRealEstateSale.SalesID
+             WHERE KASINSPARKS.CISRealEstateSalesDate.SalesDate = KASINSPARKS.CISWeatherSample.DateRec`;
     
     // If there is a start date, add it to the where clause
     if (req.query["fromdate"] !== undefined) {
@@ -62,6 +78,11 @@ router.get('/avgsales', function(req, res, next) {
     // If there is a property type specified, add it to the where clause
     if (req.query["type"] !== undefined) {
         querystr += " AND Type = '" + req.query["type"] + "'";
+    }
+
+    // If there is a city specified, add it to the where clause
+    if (req.query["city"] !== undefined) {
+        querystr += " AND City = '" + req.query["city"] + "'";
     }
 
     querystr += `\nGROUP BY SalesDate`;

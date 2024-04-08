@@ -4,6 +4,8 @@ import './App.css';
 
 import TimeOfYearQuery from './monthOfYearQuerys.js';
 
+import NumberOfTuples from './custom_components/num_of_tuples_comp.js';
+
 
 // https://react.dev/learn/conditional-rendering
 function TestAPIConnection({ apiRes }) {
@@ -25,8 +27,7 @@ class App extends Component {
     // Used as an example to test connection to the API backend
     callAPI() {
         // TODO: Change back to localhost
-        //fetch("http://localhost:8080/test")
-        fetch("http://192.168.20.2:8080/test")
+        fetch("http://localhost:8080/test")
             .then(res => res.text())
             .then(res => this.setState({ apiResponse: res }))
             .catch(err => err);
@@ -41,22 +42,11 @@ class App extends Component {
       return (
         <div className="App">
           <header className="App-header">
-            <img src={logo} className="App-logo" alt="logo" />
-            <p>
-              Edit <code>src/App.js</code> and save to reload.
-            </p>
-            <a
-              className="App-link"
-              href="https://reactjs.org"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Learn React
-            </a>
             <TestAPIConnection
               apiRes={this.state.apiResponse} 
             />
             <TimeOfYearQuery /> 
+            <NumberOfTuples /> 
           </header>
         </div>
       );

@@ -7,14 +7,14 @@ ChartJS.register(LinearScale, PointElement, LineElement, Tooltip, Legend, TimeSc
 
 
 export default function TimeOfYearQuery() {
-    // TODO: change back to localhost
-    const base_url_str = "http://192.168.20.2:8080/queries/monthofyear/avgsales";
+    const base_url_str = "http://localhost:8080/queries/monthofyear/avgsales";
 
     // REACT States
     const [data, setData] = useState({ tuples: [] });
     const [sqlstr, setSqlstr] = useState(base_url_str);
     const [showsqlcommand, setShowsqlcommand] = useState("");
     const [types, setTypes] = useState([]);
+    const [cities, setCities] = useState([]);
     const [colSelect, setColSelect] = useState("COUNT(CISREALESTATESALE.SALESID)");
 
     // Used to dynmically update the screen when the React state sqlstr is changed
@@ -41,15 +41,20 @@ export default function TimeOfYearQuery() {
 
     // Get the different real estate types from the db
     useEffect(() => {
-        // TODO: change back to localhost
-        fetch("http://192.168.20.2:8080/queries/monthofyear/types")
+        fetch("http://localhost:8080/queries/monthofyear/types")
             .then(res => res.json())
             .then(json => setTypes(json))
             .catch(err => err);
 
+        // Get all the cities
+        fetch("http://localhost:8080/queries/monthofyear/cities")
+            .then(res => res.json())
+            .then(json => setCities(json))
+            .catch(err => err);
+
         return () => {}
     }, []);
-
+    
     // Options for the chartjs graph
     const options = {
         scales: {
@@ -78,8 +83,8 @@ export default function TimeOfYearQuery() {
             {
                 label: 'Connecticut Daily Average Temperature',
                 data: data.tuples.map(el => (
-                    {x: el.SALESDATE, y: el['AVG(PRECIPITATION)']}
-                    //{x: el.SALESDATE, y: el['AVG(AVGTEMP)']}
+                    //{x: el.SALESDATE, y: el['AVG(PRECIPITATION)']}
+                    {x: el.SALESDATE, y: el['AVG(AVGTEMP)']}
                     //{x: el.SALESDATE, y: el['AVG(SNOWDEPTH)']}
                 )),
                 backgroundColor: 'rgba(9, 99, 132, 1)',
@@ -100,6 +105,7 @@ export default function TimeOfYearQuery() {
             "column"   : document.getElementById("column_select").value,
             "minval"   : document.getElementById("min_val").value,
             "maxval"   : document.getElementById("max_val").value,
+            "city"     : document.getElementById("city").value,
         };
         
         // A flag to only include a question mark at the beginning
@@ -137,6 +143,12 @@ export default function TimeOfYearQuery() {
     for (var i = 0; i < types.length; ++i) {
         property_type_rows.push(types[i]["TYPE"]);
     }
+
+    var city_rows = [];
+    for (var i = 0; i < cities.length; ++i) {
+        city_rows.push(cities[i]["CITY"]);
+        city_rows.sort();
+    }
     
     // Split the sql string into seperate lines
     var sql_command_lines = showsqlcommand.split("\n");
@@ -160,6 +172,13 @@ export default function TimeOfYearQuery() {
             <option value=""></option>
             {property_type_rows.map(p_type => (
                 <option value={p_type}>{p_type}</option>
+            ))}
+        </select>
+        <label for="city">City: </label>
+        <select name="city" id="city">
+            <option value=""></option>
+            {city_rows.map(city => (
+                <option value={city}>{city}</option>
             ))}
         </select>
 
