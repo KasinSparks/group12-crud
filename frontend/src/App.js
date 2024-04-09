@@ -2,12 +2,11 @@ import React, { useEffect, useState } from 'react';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import logo from './logo.svg';
 import './App.css';
-import './Account.css';
-import Login from './Login';
-import Register from './Register';
+import Login from './AccountButtons/Login';
+import Register from './AccountButtons/Register';
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 import { Doughnut } from 'react-chartjs-2';
-import Home from './Home'; // Assuming you have a basic Home component
+import Home from './AccountButtons/Home'; // Assuming you have a basic Home component
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 

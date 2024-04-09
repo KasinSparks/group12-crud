@@ -1,3 +1,4 @@
+import './Account.css';
 import React, { useState } from 'react';
 
 function Register() {

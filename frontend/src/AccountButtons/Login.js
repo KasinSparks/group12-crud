@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import './App.css'; // Ensure this points to wherever your styles are defined
+import './Account.css'; // Ensure this points to wherever your styles are defined
 
 function Login() {
     const [username, setUsername] = useState('');
