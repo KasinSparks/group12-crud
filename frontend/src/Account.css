@@ -1,0 +1,61 @@
+
+.account-container {
+    display: flex;
+    flex-direction: column;
+    max-width: 300px; /* Adjust to match the width of your register account */
+    margin: 20px auto; /* Center the account on the page */
+    padding: 20px;
+    background: #fff; /* Adjust if you have a specific background color */
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional: for a subtle shadow */
+}
+
+.account-container label,
+.account-container input,
+.account-container button {
+    width: 100%; /* Ensure full width */
+    margin-bottom: 10px; /* Adjust space between account fields */
+}
+
+.account-container input,
+.account-container button {
+    padding: 10px; /* Padding inside the input boxes and button */
+    border: 1px solid #ccc; /* Border color */
+    border-radius: 4px; /* Rounded corners */
+    box-sizing: border-box; /* Include padding and border in the element's total width and height */
+}
+
+.account-container button {
+    background-color: #007bff; /* Button background color */
+    color: white; /* Button text color */
+    border: none; /* No border for buttons */
+    cursor: pointer; /* Cursor to pointer to indicate it's clickable */
+}
+
+.account-container button:hover {
+    background-color: #0056b3; /* Darker shade for button on hover */
+}
+
+/* .boxes {
+    margin-right: 30%;
+} */
+
+/*login.css stuff*/
+.login-container {
+    margin: 20px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    display: inline-block;
+  }
+  
+  .login-container form div {
+    margin-bottom: 10px;
+  }
+  
+  .login-container label {
+    margin-right: 10px;
+  }
+  
+  .login-container input {
+    margin-right: 10px;
+  }
