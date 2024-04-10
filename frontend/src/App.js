@@ -1,12 +1,51 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
+import Navigation from './Navigation';
+import CRUD from './pages/CRUD';
+import Map from './pages/Map';
+import Dashboard from './pages/Dashboard';
+import About from './pages/About';
+import { Route, Routes } from 'react-router-dom';
 
+//Dashboard Imports
+import ResidentialDashboard from './pages/dashpages/residentalDashboard';
+import ResidentialDevelopment from './pages/dashpages/residentialDevelopment';
+import PropertyInvestment from './pages/dashpages/propertyInvestment';
+import MonthlySales from './pages/dashpages/monthlySales';
+import PropertyTypes from './pages/dashpages/propertyTypes';
+import HumanImpact from './pages/dashpages/humanImpact';
+import Environmental from './pages/dashpages/environmental';
+import Criminal from './pages/dashpages/criminal';
+import Transportation from './pages/dashpages/transportation';
+import DashNavigation from './pages/dashNavigation';
+
+/*Template Imports
+ChartJS.register(ArcElement, Tooltip, Legend);
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 import { Doughnut } from 'react-chartjs-2';
-ChartJS.register(ArcElement, Tooltip, Legend);
+import logo from './logo.svg';
+*/
 
+function App() {
+  return (
+    <>
+      <div className="container">
+        <Routes>
+          <Route path="/" element={<CRUD />} />
+          <Route path="/map" element={<Map />} />
+          <Route path="/dashboard" element={<Dashboard />}/> 
+          <Route path="/about" element={<About />} />
+        </Routes>
+      </div>   
 
+      
+    </>
+  )
+ return <Navigation/>
+    
+}
+
+/*
 
 // https://react.dev/learn/conditional-rendering
 function TestAPIConnection({ apiRes }) {
@@ -16,7 +55,6 @@ function TestAPIConnection({ apiRes }) {
 
     return <p color="red" className="App-intro">NO CONNECTION TO BACKEND API</p>;
 }
-
 
 class App extends Component {
     constructor(props) {
@@ -58,7 +96,6 @@ class App extends Component {
         this.callAPI();
     }
 
-
     render() {
       return (
         <div className="App">
@@ -67,14 +104,6 @@ class App extends Component {
             <p>
               Edit <code>src/App.js</code> and save to reload.
             </p>
-            <a
-              className="App-link"
-              href="https://reactjs.org"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Learn React
-            </a>
             <TestAPIConnection
               apiRes={this.state.apiResponse} 
             />
@@ -84,5 +113,6 @@ class App extends Component {
       );
     }
 }
+*/
 
 export default App;
