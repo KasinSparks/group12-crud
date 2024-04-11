@@ -21,6 +21,18 @@ body {
     padding: 0 1rem;
 }
 
+.aboutText {
+    text-align: center;
+    display:inline-block;
+    padding: 5px 5px 5px 5px;
+    height: auto;
+    width: 50%;
+    border: 1px solid #ddd;
+    border-radius: 4px 4px 4px 4px;
+    background-color: #f4f4f4; 
+    
+}
+
 .site-title {
     font-size: 2rem;
 }

@@ -12,9 +12,9 @@ import DashNavigation from './dashNavigation';
 
 export default function Dashboard() {
     return (
+      
         <>
-        <h1>Dashboard</h1>
-        <a>Links will be altered to a user friendly format. (Short descriptions for each?)</a>
+        <h1 className="dashHead">Dashboard</h1>
         <DashNavigation/>
         <div className="dashContainer">
           <Routes>
