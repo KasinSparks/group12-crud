@@ -3,10 +3,22 @@ import { Chart as ChartJS, LinearScale, PointElement, LineElement, Tooltip, Lege
 import { Scatter } from 'react-chartjs-2';
 //import moment from 'moment';
 import 'chartjs-adapter-moment';
+import NumberOfTuples from '../../custom_components/num_of_tuples_comp.js';
+
 ChartJS.register(LinearScale, PointElement, LineElement, Tooltip, Legend, TimeScale);
 
 
-export default function TimeOfYearQuery() {
+export default function MonthlySales() {
+    return (
+        <>
+          <h1>Monthly Sales Trend</h1>
+          <TimeOfYearQuery /> 
+          <NumberOfTuples /> 
+        </>
+    );
+}
+
+function TimeOfYearQuery() {
     const base_url_str = "http://localhost:8080/queries/monthofyear/avgsales";
 
     // REACT States

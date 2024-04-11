@@ -1,0 +1,62 @@
+.App-map {
+    width: 800px
+ }
+
+ /*alter map image to scale with browser size*/
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+}
+
+.dashHead{
+    padding: 1rem;
+    text-align: left;
+    background-color: #222;
+    width: 14%;
+    color: white;
+    margin-bottom: 0px;
+    margin-top: 0px;
+}
+
+.dashContainer{
+    margin: 1rem;
+    text-align: center;
+}
+
+.dashnav {
+    padding: 0.5rem;
+    text-align: center;
+    background-color: #222;
+    width: 14%;
+    position: absolute;
+}
+
+.dashnav a {
+    color: white;
+    text-decoration: none;
+    height: 100%;
+    display: grid;
+    align-items: center;
+    padding: .25rem;
+    text-align: left;
+    outline: #555 solid 0.25px;
+}
+
+.dashnav ul {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    gap: 1rem;
+}
+
+.dashnav li.active {
+    background-color: #555;
+}
+
+.dashnav li:hover {
+    background-color: #777;
+}
