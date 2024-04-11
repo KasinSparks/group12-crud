@@ -6,17 +6,16 @@ const dbConfig = require('./dbConfig.js');
 
 oracledb.outFormat = oracledb.OUT_FORMAT_OBJECT;
 
-async function run() {
+async function run(query_str) {
     
-    const connection = await oracledb.getConnection (dbConfig);
+    const connection = await oracledb.getConnection(dbConfig);
 
-    const result = await connection.execute(
-        `SELECT *
-         FROM City`,
-    );
+    const result = await connection.execute(query_str);
 
     console.log(result.rows);
     await connection.close();
+    return await result.rows;
 }
 
-run();
+//run();
+module.exports = run;
