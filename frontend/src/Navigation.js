@@ -8,6 +8,8 @@ export default function Navigation() {
             <CustomLink to ="/map">Map</CustomLink>
             <CustomLink to ="/dashboard">Dashboard</CustomLink>
             <CustomLink to ="/about">About</CustomLink>
+            <CustomLink to ="/login">Login</CustomLink>
+            <CustomLink to ="/register">Register</CustomLink>
         </ul>
     </nav>
     )

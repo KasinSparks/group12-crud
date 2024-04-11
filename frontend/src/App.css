@@ -13,19 +13,68 @@
   }
 }
 
+/* Style for the header which contains navigation */
 .App-header {
-  background-color: #282c34;
-  min-height: 100vh;
   display: flex;
-  flex-direction: column;
+  justify-content: space-between;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+  padding: 10px 20px;  /* Adjust padding as needed */
+  background-color: #282c34; /* Example background color */
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+/* Styling for navigation links */
+.nav-links {
+  display: flex;
+  list-style: none;
+  margin: 0; /* Removes default margin */
+  padding: 0; /* Removes default padding */
+}
+
+.nav-links ul {
+  list-style: none;
+  display: flex;
+  gap: 10px; /* Adjust as needed for space between links */
+}
+
+.nav-links li {
+  margin-left: 10px; /* Space between links, adjust as needed for buffer */
+}
+
+.nav-links a {
+  color: white; /* Text color */
+  text-decoration: none;
+  padding: 10px 15px; /* Padding around the text for better touch target */
+  background-color: #007bff; /* Background color */
+  border-radius: 5px; /* Rounded corners for links */
+  transition: background-color 0.3s; /* Smooth transition for hover effect */
+}
+
+.nav-links a:hover {
+  background-color: #0056b3; /* Darker shade on hover */
+}
+
+/* Responsive styles for mobile devices */
+@media (max-width: 600px) {
+  .nav-links {
+      flex-direction: row; /* Ensure items are in a row on smaller screens */
+  }
+
+  .nav-links li {
+      margin: 0 5px; /* Small horizontal margin for mobile */
+  }
+}
+
+.account-prompt {
+  margin-top: 15px;
+  text-align: center;
 }
 
 @keyframes App-logo-spin {
@@ -36,3 +85,4 @@
     transform: rotate(360deg);
   }
 }
+
