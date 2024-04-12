@@ -13,6 +13,7 @@ export default function DashNavigation() {
             <CustomLink to ="/dashboard/environmentaldashboard">Environmental Dashboard</CustomLink>
             <CustomLink to ="/dashboard/criminalimpact">Criminal Impact</CustomLink>
             <CustomLink to ="/dashboard/transportationimpact">Transportation Impact</CustomLink>
+            <CustomLink to ="/dashboard/tupleCount">Tuple Count</CustomLink>
         </ul>
     </nav>
     )

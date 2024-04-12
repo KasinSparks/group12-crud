@@ -13,7 +13,6 @@ export default function MonthlySales() {
         <>
           <h1>Monthly Sales Trend</h1>
           <TimeOfYearQuery /> 
-          <NumberOfTuples /> 
         </>
     );
 }
