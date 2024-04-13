@@ -26,7 +26,7 @@ function TimeOfYearQuery() {
     const [showsqlcommand, setShowsqlcommand] = useState("");
     const [types, setTypes] = useState([]);
     const [cities, setCities] = useState([]);
-    const [colSelect, setColSelect] = useState("COUNT(CISREALESTATESALE.SALESID)");
+    const [colSelect, setColSelect] = useState("NUMOFSALES");
 
     // Used to dynmically update the screen when the React state sqlstr is changed
     useEffect(() => {
@@ -84,20 +84,24 @@ function TimeOfYearQuery() {
             {
                 label: colSelect,
                 //data: [{x: 0, y: 1}],
-                data: data.tuples.map(el => (
+                data: data.tuples.map(el => {
                     //{x: el.SALESDATE, y: el['COUNT(CISREALESTATESALE.SALESID)']}
                     //{x: el.SALESDATE, y: el['AVG(SOLDVALUE)']}
-                    {x: el.SALESDATE, y: el[colSelect]}
-                )),
+                    //{x: el.SALESDATE, y: el[colSelect]}
+                    return ({x: new Date(el.YEAR,  el.MONTH, el.DAY), y: el[colSelect]})
+                }),
                 backgroundColor: 'rgba(255, 99, 132, 1)',
             },
             {
                 label: 'Connecticut Daily Average Temperature',
-                data: data.tuples.map(el => (
+                data: data.tuples.map(el => {
                     //{x: el.SALESDATE, y: el['AVG(PRECIPITATION)']}
-                    {x: el.SALESDATE, y: el['AVG(AVGTEMP)']}
                     //{x: el.SALESDATE, y: el['AVG(SNOWDEPTH)']}
-                )),
+                    //{x: el.SALESDATE, y: el['AVG(AVGTEMP)']}
+                    //{x: new Date(el.YEAR,  el.MONTH, el.DAY), y: el['AVGTEMP']}
+                    //{x: new Date(el.YEAR, el.MONTH, 1), y: el['AVG(AVGTEMP)']}
+                    return ({x: new Date(el.YEAR,  el.MONTH, el.DAY), y: el['AVGTEMP']})
+                }),
                 backgroundColor: 'rgba(9, 99, 132, 1)',
                 pointStyle: 'rect',
             },
@@ -117,8 +121,11 @@ function TimeOfYearQuery() {
             "minval"   : document.getElementById("min_val").value,
             "maxval"   : document.getElementById("max_val").value,
             "city"     : document.getElementById("city").value,
+            "year"     : document.getElementById("year").checked,
+            "month"    : document.getElementById("month").checked,
+            "day"      : document.getElementById("day").checked,
         };
-        
+
         // A flag to only include a question mark at the beginning
         var is_first = true;
         // Add all the params that have a value
@@ -161,50 +168,60 @@ function TimeOfYearQuery() {
         city_rows.sort();
     }
     
-    // Split the sql string into seperate lines
-    var sql_command_lines = showsqlcommand.split("\n");
-    
 
     // render
     return (
      <>
 
        <Scatter options={options} data={chart_data} />
-        <label for="fromdate">From: </label>
-        <input id="fromdate" type="date" name="fromdate" />
-        <label for="todate">To: </label>
-        <input id="todate" type="date" name="todate" />
-        <label for="min_val">Min Value: </label>
-        <input id="min_val" type="number" name="min_val" placeholder="0" />
-        <label for="max_val">Max Value: </label>
-        <input id="max_val" type="number" name="max_val" />
-        <label for="property_type">Property Type: </label>
-        <select name="property_type" id="property_type">
-            <option value=""></option>
-            {property_type_rows.map(p_type => (
-                <option value={p_type}>{p_type}</option>
-            ))}
-        </select>
-        <label for="city">City: </label>
-        <select name="city" id="city">
-            <option value=""></option>
-            {city_rows.map(city => (
-                <option value={city}>{city}</option>
-            ))}
-        </select>
+        <div>
+          <div>
+            <label for="year">Year:</label>
+            <input id="year" type="checkbox" name="year" defaultChecked={true} />
+            <label for="month"> | month:</label>
+            <input id="month" type="checkbox" name="month" defaultChecked={true} />
+            <label for="day"> | day:</label>
+            <input id="day" type="checkbox" name="day" defaultChecked={true} />
+          </div>
 
-        <label for="column_select">Column: </label>
-        <select name="column_select" id="column_select" onChange={setColumn}>
-            <option value="COUNT(CISREALESTATESALE.SALESID)">COUNT(CISREALESTATESALE.SALESID)</option>
-            <option value="AVG(SOLDVALUE)">AVG(SOLDVALUE)</option>
-        </select>
-        <button onClick={setQueryString}>Filter</button>
+          <div>
+            <label for="fromdate">From: </label>
+            <input id="fromdate" type="date" name="fromdate" />
+            <label for="todate"> | To: </label>
+            <input id="todate" type="date" name="todate" />
+            <label for="min_val"> | Min Value: </label>
+            <input id="min_val" type="number" name="min_val" placeholder="0" />
+            <label for="max_val"> | Max Value: </label>
+            <input id="max_val" type="number" name="max_val" />
+            <label for="property_type"> | Property Type: </label>
+            <select name="property_type" id="property_type">
+                <option value=""></option>
+                {property_type_rows.map(p_type => (
+                    <option value={p_type}>{p_type}</option>
+                ))}
+            </select>
+            <label for="city"> | City: </label>
+            <select name="city" id="city">
+                <option value=""></option>
+                {city_rows.map(city => (
+                    <option value={city}>{city}</option>
+                ))}
+            </select>
+
+            <label for="column_select"> | Column: </label>
+            <select name="column_select" id="column_select" onChange={setColumn}>
+                <option value="NUMOFSALES">NumOfSales</option>
+            </select>
+            <div>
+              <button onClick={setQueryString}>Filter</button>
+            </div>
+          </div>
+        </div>
 
         <div align="left">
-            {sql_command_lines.map(cl => (
-                <p>{cl}</p>
-            ))}
-            
+          <pre>
+            {showsqlcommand}
+          </pre>
         </div>
         </>
     );
