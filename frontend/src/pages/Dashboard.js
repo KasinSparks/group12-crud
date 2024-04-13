@@ -8,6 +8,7 @@ import HumanImpact from './dashpages/humanImpact';
 import Environmental from './dashpages/environmental';
 import Criminal from './dashpages/criminal';
 import Transportation from './dashpages/transportation';
+import TupleCount from './dashpages/tupleCount';
 import DashNavigation from './dashNavigation';
 
 export default function Dashboard() {
@@ -27,6 +28,7 @@ export default function Dashboard() {
             <Route path="/dashboard/environmentaldashboard" element={<Environmental />} />
             <Route path="/dashboard/criminalimpact" element={<Criminal />} />
             <Route path="/dashboard/transportationimpact" element={<Transportation />} />
+            <Route path="/dashboard/tupleCount" element={<TupleCount />} />
           </Routes>
         </div>
         </>
