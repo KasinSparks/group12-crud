@@ -9,6 +9,7 @@ var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var testAPIRouter = require('./routes/test');
 var monthOfYearQueryAPIRouter = require('./routes/queries/month_of_year');
+var transportationQueryAPIRouter = require('./routes/queries/transportation');
 var numOfTuplesQueryAPIRouter = require('./routes/queries/num_of_tuples');
 
 var app = express();
@@ -31,6 +32,7 @@ app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/test', testAPIRouter);
 app.use('/queries/monthofyear', monthOfYearQueryAPIRouter);
+app.use('/queries/transportation', transportationQueryAPIRouter);
 app.use('/queries/numoftuples', numOfTuplesQueryAPIRouter);
 
 // catch 404 and forward to error handler
