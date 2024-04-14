@@ -109,8 +109,6 @@ function TransportationQuery() {
             "todate"   : document.getElementById("todate").value,
             "type"     : document.getElementById("property_type").value,
             "column"   : document.getElementById("column_select").value,
-            "minval"   : document.getElementById("min_val").value,
-            "maxval"   : document.getElementById("max_val").value,
             "city"     : document.getElementById("city").value,
         };
 
