@@ -169,6 +169,8 @@ function PropertyTypesQuery() {
             "year"     : document.getElementById("year").checked,
             "month"    : document.getElementById("month").checked,
             "day"      : document.getElementById("day").checked,
+            "minval"   : document.getElementById("min_val").value,
+            "maxval"   : document.getElementById("max_val").value,
         };
 
         // A flag to only include a question mark at the beginning
@@ -221,6 +223,10 @@ function PropertyTypesQuery() {
             <input id="fromdate" type="date" name="fromdate" />
             <label for="todate"> | To: </label>
             <input id="todate" type="date" name="todate" />
+            <label for="min_val"> | Min Value: </label>
+            <input id="min_val" type="number" name="min_val" placeholder="0" />
+            <label for="max_val"> | Max Value: </label>
+            <input id="max_val" type="number" name="max_val" />
             <label for="city"> | City: </label>
             <select name="city" id="city">
                 <option value=""></option>

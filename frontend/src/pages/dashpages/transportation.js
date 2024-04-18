@@ -7,7 +7,7 @@ import 'chartjs-adapter-moment';
 ChartJS.register(LinearScale, PointElement, LineElement, Tooltip, Legend, TimeScale);
 
 
-export default function MonthlySales() {
+export default function Transportation() {
     return (
         <>
           <h1>Transportation Trend</h1>
@@ -81,14 +81,14 @@ function TransportationQuery() {
     const chart_data = {
         datasets: [
             {
-                label: colSelect,
+                label: "Number of Properties Sold",
                 data: data.tuples.map(el => {
                     return ({x: el['PROPERTYSALEDATE'], y: el['NUMOFSALES']})
                 }),
                 backgroundColor: 'rgba(255, 99, 132, 1)',
             },
             {
-                label: 'Average Traffic Congestion Delay (Seconds)',
+                label: colSelect,
                 data: data.tuples.map(el => {
                     //return ({x: el["TRAFFICEVENTDATE"], y: el['AVGTRAFFICJAMDURATIONSEC']})
                     return ({x: el["TRAFFICEVENTDATE"], y: el[colSelect]})

@@ -52,19 +52,19 @@ router.get('/avgsales', function(req, res, next) {
     if (req.query["year"] === "true") {
         groupbyselectstr2 += " EXTRACT(YEAR FROM SalesDate) year, ";
     } else {
-        groupbyselectstr2 += " 1 year, ";
+        groupbyselectstr2 += " 0 year, ";
     }
 
     if (req.query["month"] === "true") {
         groupbyselectstr2 += " EXTRACT(MONTH FROM SalesDate) month, ";
     } else {
-        groupbyselectstr2 += " 1 month, ";
+        groupbyselectstr2 += " 0 month, ";
     }
 
     if (req.query["day"] === "true") {
         groupbyselectstr2 += " EXTRACT(DAY FROM SalesDate) day, ";
     } else {
-        groupbyselectstr2 += " 1 day, ";
+        groupbyselectstr2 += " 0 day, ";
     }
 
     if (!(req.query["year"] || req.query["month"] || req.query["day"])) {
