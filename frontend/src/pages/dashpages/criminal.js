@@ -10,7 +10,7 @@ ChartJS.register(LinearScale, PointElement, LineElement, Tooltip, Legend, TimeSc
 export default function Criminal() {
     return (
         <>
-          <h1>Police Incident Affect on Sales Ratio Trend</h1>
+          <h1>Police Incident Affect on Sales Ratio Trend (City of Hartford)</h1>
           <CriminalQuery /> 
         </>
     );
@@ -23,9 +23,6 @@ function CriminalQuery() {
     const [data, setData] = useState({ tuples: [] });
     const [sqlstr, setSqlstr] = useState(base_url_str);
     const [showsqlcommand, setShowsqlcommand] = useState("");
-    const [showViolentCrimes, setShowViolentCrimes] = useState(true);
-    const [showNonViolentCrimes, setShowNonViolentCrimes] = useState(true);
-    const [showAvgSalesRatio, setShowAvgSalesRatio] = useState(true);
 
     // Used to dynmically update the screen when the React state sqlstr is changed
     useEffect(() => {
@@ -63,33 +60,21 @@ function CriminalQuery() {
 
     // Data for the chartjs graph
     const chart_data = {
-        datasets: []
-    };
-
-    if (showAvgSalesRatio) {
-        chart_data.datasets.push(
+        datasets: [
             {
                 label: 'AVGSALESRATIO',
                 data: data.tuples.map(el => {
                     return ({x: new Date(el.YEAR,  el.MONTH, el.DAY), y: el['AVGSALESRATIO']})
                 }),
-                backgroundColor: 'rgba(255, 0, 0, 1)',
+                backgroundColor: 'rgba(220, 127, 20, 1)',
             },
-        );
-    } else {
-        chart_data.datasets.push(
             {
                 label: 'TOTALSALES',
                 data: data.tuples.map(el => {
                     return ({x: new Date(el.YEAR,  el.MONTH, el.DAY), y: el['TOTALNUMOFSALES']})
                 }),
-                backgroundColor: 'rgba(255, 0, 0, 1)',
+                backgroundColor: 'rgba(0, 255, 0, 1)',
             },
-        );
-    }
-
-    if (showNonViolentCrimes) {
-        chart_data.datasets.push(
             {
                 label: 'AVGNUMOFNONVIOLENTCRIMES',
                 data: data.tuples.map(el => {
@@ -98,21 +83,17 @@ function CriminalQuery() {
                 backgroundColor: 'rgba(0, 0, 255, 1)',
                 pointStyle: 'rect',
             },
-        );
-    }
-
-    if (showViolentCrimes) {
-        chart_data.datasets.push(
             {
                 label: 'AVGNUMOFVIOLENTCRIMES',
                 data: data.tuples.map(el => {
                     return ({x: new Date(el.YEAR,  el.MONTH, el.DAY), y: el['AVGNUMOFVIOLENTCRIMES']})
                 }),
-                backgroundColor: 'rgba(0, 255, 0, 1)',
-                pointStyle: 'rectRot',
+                backgroundColor: 'rgba(255, 0, 0, 1)',
+                pointStyle: 'rect',
             },
-        );
-    }
+        ]
+    };
+
 
     // Set the GET query (i.e. url?type=apartment&minval=2)
     function setQueryString() {
@@ -149,10 +130,6 @@ function CriminalQuery() {
         
         // Update the React state
         setSqlstr(url_str);
-
-        setShowNonViolentCrimes(document.getElementById("nonViolentCrimes").checked);
-        setShowViolentCrimes(document.getElementById("violentCrimes").checked);
-        setShowAvgSalesRatio(document.getElementById("avgSales").checked);
     }
 
 
@@ -162,22 +139,6 @@ function CriminalQuery() {
 
        <Scatter options={options} data={chart_data} />
         <div>
-          <div>
-            <label for="avgSales">Show Average Sales:</label>
-            <input id="avgSales" type="checkbox" name="avgSales" defaultChecked={true} />
-          </div>
-
-          <hr />
-
-          <div>
-            <label for="nonViolentCrimes">Show Non-Violent Crimes:</label>
-            <input id="nonViolentCrimes" type="checkbox" name="nonViolentCrimes" defaultChecked={true} />
-            <label for="violentCrimes"> | Show Violent Crimes:</label>
-            <input id="violentCrimes" type="checkbox" name="violentCrimes" defaultChecked={true} />
-          </div>
-
-          <hr />
-
           <div>
             <label for="year">Year:</label>
             <input id="year" type="checkbox" name="year" defaultChecked={true} />

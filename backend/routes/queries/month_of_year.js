@@ -72,9 +72,9 @@ router.get('/avgsales', function(req, res, next) {
     }
     
     // The dynamic query string
-    var querystr = "SELECT year, month, day, avgtemp, numOfSales";
+    var querystr = "SELECT year, month, day, avgtemp, avgSun, avgPrecipitation, minTemp, maxTemp, avgSnowDepth, numOfSales";
 querystr += `\nFROM (
-  SELECT` + groupbyselectstr2 + `Count(KASINSPARKS.CISRealEstateSale.SalesID) numOfSales, AVG(SoldValue), Avg(AvgTemp) avgTemp
+  SELECT` + groupbyselectstr2 + `Count(KASINSPARKS.CISRealEstateSale.SalesID) numOfSales, AVG(SoldValue), Avg(AvgTemp) avgTemp, Avg(SunshineTotal) avgSun, Avg(Precipitation) avgPrecipitation, MIN(MinTemp) minTemp, MAX(MaxTemp) maxTemp, Avg(SnowDepth) avgSnowDepth
   FROM KASINSPARKS.CISRealEstateSale
   INNER JOIN KASINSPARKS.CISRealEstateSalesDate ON KASINSPARKS.CISRealEstateSale.SalesID = KASINSPARKS.CISRealEstateSalesDate.SalesID
   INNER JOIN KASINSPARKS.CISLocation ON KASINSPARKS.CISRealEstateSale.LocatedAt = KASINSPARKS.CISLocation.LocationID
