@@ -241,10 +241,18 @@ function PropertyTypesQuery() {
           </div>
         </div>
 
-        <div align="left">
-          <pre>
-            {showsqlcommand}
-          </pre>
+        <div class="queryBox">
+          <div align="left" class="sqlQuery">
+            <h2>Dynamic SQL Query</h2>
+            <pre>
+              {showsqlcommand}
+            </pre>
+          </div>
+          <div class="queryEx">
+            <h2>Colloquial Query</h2>
+            <p>If we consider different property types (such as residential, commercial, and vacant land), what have been the sales ratios (assessed vs. sales values) of different property types in different towns in Connecticut over time?  What property type has the best (for the consumer) sales ratio in each town? Has this changed over time?</p>
+            <p>For sellers and real estate agents, the sales ratio can be considered extremely valuable. This query aims to provide the sellers and real estate agents alike as to which property types are worth looking into. This query can also highlight where the demand for a given property type is high by the assessed value being much lower than the sales value. For example, if the sales ratio is low, then it may be the case that the buyer paid over-market value, indicating the demand is high in a given location.</p>
+          </div>
         </div>
         </>
     );
@@ -433,10 +441,18 @@ function PropertyTypesMinMaxQuery() {
           </div>
         </div>
 
-        <div align="left">
-          <pre>
-            {showsqlcommand}
-          </pre>
+        <div class="queryBox">
+          <div align="left" class="sqlQuery">
+            <h2>Dynamic SQL Query</h2>
+            <pre>
+              {showsqlcommand}
+            </pre>
+          </div>
+          <div class="queryEx">
+            <h2>Colloquial Query</h2>
+            <p>If we consider different property types (such as residential, commercial, and vacant land), what have been the sales ratios (assessed vs. sales values) of different property types in different towns in Connecticut over time?  What property type has the best (for the consumer) sales ratio in each town? Has this changed over time?</p>
+            <p>For sellers and real estate agents, the sales ratio can be considered extremely valuable. This query aims to provide the sellers and real estate agents alike as to which property types are worth looking into. This query can also highlight where the demand for a given property type is high by the assessed value being much lower than the sales value. For example, if the sales ratio is low, then it may be the case that the buyer paid over-market value, indicating the demand is high in a given location.</p>
+          </div>
         </div>
         </>
     );

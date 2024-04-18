@@ -242,10 +242,18 @@ function TimeOfYearQuery() {
           </div>
         </div>
 
-        <div align="left">
-          <pre>
-            {showsqlcommand}
-          </pre>
+        <div class="queryBox">
+          <div align="left" class="sqlQuery">
+            <h2>Dynamic SQL Query</h2>
+            <pre>
+              {showsqlcommand}
+            </pre>
+          </div>
+          <div class="queryEx">
+            <h2>Colloquial Query</h2>
+            <p>What influence over time has the month of the year the sale was made in had on the number of listings for each property and residential type? What month has had the highest number of sales each year? Is this different for different residential types, or for commercial sales? Has this changed over time?</p>
+            <p>Determining when to begin saving for a down payment on a house is an essential step to buying a home. This query will attempt to give the user insight into when that moment should be. Moreover, this query is also of interest to sellers and real estate agents to see the best or most optimal time to sell a house. This query may also be compared to the weather dataset. For instance, are people less likely to purchase a home when monthly average temperatures are below freezing, the month has been mostly rainy, or the month has had a significant amount of snow?</p>
+          </div>
         </div>
         </>
     );

@@ -159,10 +159,18 @@ function CriminalQuery() {
           </div>
         </div>
 
-        <div align="left">
-          <pre>
-            {showsqlcommand}
-          </pre>
+        <div class="queryBox">
+          <div align="left" class="sqlQuery">
+            <h2>Dynamic SQL Query</h2>
+            <pre>
+              {showsqlcommand}
+            </pre>
+          </div>
+          <div class="queryEx">
+            <h2>Colloquial Query</h2>
+            <p>If we consider different police incidents (such as larceny and assault) in the city of Hartford CT, what influence over time has crime had on sales ratios of different residential types? Has this changed over time?</p>
+            <p>Crime has been a top factor for potential homeowners to consider. By including this query, users will be able to visualize how a given crime type in the City of Hartford, CT, influences the sales price of the different residential types. Additionally, if the location data is accurate enough in both datasets, another query question will be asked. How has the number of crimes in a given radius from a given property changed over time? The crime rate will be an important decision-making factor for most house seekers.</p>
+          </div>
         </div>
         </>
     );

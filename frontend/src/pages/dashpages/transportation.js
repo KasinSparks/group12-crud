@@ -192,10 +192,18 @@ function TransportationQuery() {
           </div>
         </div>
 
-        <div align="left">
-          <pre>
-            {showsqlcommand}
-          </pre>
+        <div class="queryBox">
+          <div align="left" class="sqlQuery">
+            <h2>Dynamic SQL Query</h2>
+            <pre>
+              {showsqlcommand}
+            </pre>
+          </div>
+          <div class="queryEx">
+            <h2>Colloquial Query</h2>
+            <p>How has the total number of properties sold daily in a given town affected the average traffic congestion time over time? Does the property type sold, residential or commercial, affect traffic congestion differently? What, if any, change has occurred over time?</p>
+            <p>An important factor when purchasing a house is the traffic infrastructure around it. A highly correlated relationship between average congestion times and the number of properties sold could suggest the city is not meeting the necessary infrastructure demand. Moreover, comparing the property type gives the user information on which type contributes to the congestion, if any. This query could also be used as a selling feature by real-estate agents for potential home or business seekers.</p>
+          </div>
         </div>
         </>
     );

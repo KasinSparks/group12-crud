@@ -64,3 +64,34 @@ body {
 .dashnav li:hover {
     background-color: #777;
 }
+
+.queryBox {
+    padding-top: 10px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.queryBox h2 {
+    text-align: center;
+}
+
+pre {
+    white-space: pre-wrap;
+}
+
+.sqlQuery {
+    width: 50%;
+    text-align: left;
+}
+
+.queryEx {
+    border-left: 2px;
+    border-style: none none none solid;
+    width: 50%;
+}
+
+.queryEx p {
+    padding: 5px;
+    padding-left: 10px;
+    text-align: left;
+}

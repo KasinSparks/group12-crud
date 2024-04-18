@@ -10,7 +10,7 @@ ChartJS.register(LinearScale, PointElement, LineElement, Tooltip, Legend, TimeSc
 export default function ResidentalDevelopment() {
     return (
             <div>
-              <h1>Resedential Development</h1>
+              <h1>Residential Development</h1>
               <ResDevQuery />
             </div>
     );
@@ -177,10 +177,18 @@ function ResDevQuery() {
           </div>
         </div>
 
-        <div align="left">
-          <pre>
-            {showsqlcommand}
-          </pre>
+        <div class="queryBox">
+          <div align="left" class="sqlQuery">
+            <h2>Dynamic SQL Query</h2>
+            <pre>
+              {showsqlcommand}
+            </pre>
+          </div>
+          <div class="queryEx">
+            <h2>Colloquial Query</h2>
+            <p>If we consider different residential types (such as single family, two family, and condo), what has been the development of different residential types in different towns in Connecticut over time?  What was the highest category in each town? Has this changed over time?</p>
+            <p>A family looking for a new place to live will be interested in the rate at which residential types are being developed. This trend can also indirectly show the amount of growth in an area that may be of interest to business owners or commercial real estate seekers. Additionally, this query will allow users to view the average price of each type and a comparison between towns. This is critical for home seekers to analyze as it will enable them to make a more informed decision about which housing type they can afford in that town. Also, this will allow real estate agents to interpret the trends and conclude where the demand for residential types is located.</p>
+          </div>
         </div>
         </>
     );
