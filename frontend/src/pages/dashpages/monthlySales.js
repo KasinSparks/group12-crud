@@ -85,24 +85,48 @@ function TimeOfYearQuery() {
                 label: colSelect,
                 //data: [{x: 0, y: 1}],
                 data: data.tuples.map(el => {
-                    //{x: el.SALESDATE, y: el['COUNT(CISREALESTATESALE.SALESID)']}
-                    //{x: el.SALESDATE, y: el['AVG(SOLDVALUE)']}
-                    //{x: el.SALESDATE, y: el[colSelect]}
                     return ({x: new Date(el.YEAR,  el.MONTH, el.DAY), y: el[colSelect]})
                 }),
-                backgroundColor: 'rgba(255, 99, 132, 1)',
+                backgroundColor: 'rgba(99, 255, 92, 1)',
             },
             {
-                label: 'Connecticut Daily Average Temperature',
+                label: 'Avg. Temperature',
                 data: data.tuples.map(el => {
-                    //{x: el.SALESDATE, y: el['AVG(PRECIPITATION)']}
-                    //{x: el.SALESDATE, y: el['AVG(SNOWDEPTH)']}
-                    //{x: el.SALESDATE, y: el['AVG(AVGTEMP)']}
-                    //{x: new Date(el.YEAR,  el.MONTH, el.DAY), y: el['AVGTEMP']}
-                    //{x: new Date(el.YEAR, el.MONTH, 1), y: el['AVG(AVGTEMP)']}
                     return ({x: new Date(el.YEAR,  el.MONTH, el.DAY), y: el['AVGTEMP']})
                 }),
                 backgroundColor: 'rgba(9, 99, 132, 1)',
+                pointStyle: 'rect',
+            },
+            {
+                label: 'Min. Temperature',
+                data: data.tuples.map(el => {
+                    return ({x: new Date(el.YEAR,  el.MONTH, el.DAY), y: el['MINTEMP']})
+                }),
+                backgroundColor: 'rgba(0, 0, 255, 1)',
+                pointStyle: 'rect',
+            },
+            {
+                label: 'Max. Temperature',
+                data: data.tuples.map(el => {
+                    return ({x: new Date(el.YEAR,  el.MONTH, el.DAY), y: el['MAXTEMP']})
+                }),
+                backgroundColor: 'rgba(255, 99, 20, 1)',
+                pointStyle: 'rect',
+            },
+            {
+                label: 'Avg Snow Depth',
+                data: data.tuples.map(el => {
+                    return ({x: new Date(el.YEAR,  el.MONTH, el.DAY), y: el['AVGSNOWDEPTH']})
+                }),
+                backgroundColor: 'rgba(30, 150, 255, 1)',
+                pointStyle: 'rect',
+            },
+            {
+                label: 'Avg Precipitation',
+                data: data.tuples.map(el => {
+                    return ({x: new Date(el.YEAR,  el.MONTH, el.DAY), y: el['AVGPRECIPITATION']})
+                }),
+                backgroundColor: 'rgba(255, 99, 132, 1)',
                 pointStyle: 'rect',
             },
         ],
