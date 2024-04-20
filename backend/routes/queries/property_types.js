@@ -91,10 +91,10 @@ router.get('/ratios', function(req, res, next) {
     querystr += `\n    (SELECT SalesID, Type 
      FROM (
        (SELECT SalesID, Type
-       FROM CISResidential)
+       FROM KASINSPARKS.CISResidential)
        UNION 
        (SELECT SalesID, Type
-       FROM CISBusiness)
+       FROM KASINSPARKS.CISBusiness)
       )) bis`;
     querystr += "\n ON res.SalesID = bis.SalesID";
     querystr += "\nJOIN KASINSPARKS.CISRealEstateSalesDate sd ON sd.SalesID= res.SalesID";
@@ -209,10 +209,10 @@ FROM (
     querystr += `\n    (SELECT SalesID, Type 
      FROM (
        (SELECT SalesID, Type
-       FROM CISResidential)
+       FROM KASINSPARKS.CISResidential)
        UNION 
        (SELECT SalesID, Type
-       FROM CISBusiness)
+       FROM KASINSPARKS.CISBusiness)
       )) bis`;
     querystr += "\n ON res.SalesID = bis.SalesID";
 
