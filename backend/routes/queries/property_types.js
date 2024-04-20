@@ -18,10 +18,10 @@ router.get('/types', function(req, res, next) {
             `SELECT DISTINCT Type 
              FROM (
                (SELECT SalesID, Type
-               FROM CISResidential)
+               FROM KASINSPARKS.CISResidential)
                UNION 
                (SELECT SalesID, Type
-               FROM CISBusiness)
+               FROM KASINSPARKS.CISBusiness)
               )`;
 
     run(querystr)
@@ -36,7 +36,7 @@ router.get('/types', function(req, res, next) {
 router.get('/cities', function(req, res, next) {
     var querystr = 
             `SELECT DISTINCT City 
-             FROM CISLocation
+             FROM KASINSPARKS.CISLocation
              ORDER BY City DESC`;
 
     run(querystr)
