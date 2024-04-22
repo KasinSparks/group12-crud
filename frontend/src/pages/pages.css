@@ -2,6 +2,11 @@
     width: 800px
  }
 
+ .Map2{
+    margin-top: 50px;
+    margin-left: 20px;
+ }
+
  /*alter map image to scale with browser size*/
 
 * {
@@ -29,6 +34,7 @@ body {
 .dashContainer{
     margin: 1rem;
     text-align: center;
+    margin-top: 150px;
 }
 
 .dashnav {
