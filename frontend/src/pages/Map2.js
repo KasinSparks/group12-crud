@@ -7,11 +7,9 @@ const mapContainerStyle = {
   height: '80vh',
 };
 const center = {
-  lat: 41.603221, // default latitude
-  lng: -73.087749, // default longitude
+  lat: 41.603221, 
+  lng: -72.887749, 
 };
-
-
 
 export default function Map2() {
   const { isLoaded, loadError } = useLoadScript({
@@ -31,7 +29,7 @@ export default function Map2() {
     <div className='Map2'>
       <GoogleMap
         mapContainerStyle={mapContainerStyle}
-        zoom={8}
+        zoom={9}
         center={center}
       >
         <Marker position={center} />
