@@ -14,10 +14,6 @@ export default function DashNavigation() {
     </nav>
     )
 }
-            //<CustomLink to ="/dashboard/residentialdashboard">Residential Dashboard</CustomLink>
-            //<CustomLink to ="/dashboard/propertyinvestmentdashboard">Property Investment Dashboard</CustomLink>
-            //<CustomLink to ="/dashboard/humanimpactdashboard">Human Impact Dashboard</CustomLink>
-            //<CustomLink to ="/dashboard/environmentaldashboard">Environmental Dashboard</CustomLink>
 
 function CustomLink({ to, children, ...props }) {
     const resolvedPath = useResolvedPath (to)

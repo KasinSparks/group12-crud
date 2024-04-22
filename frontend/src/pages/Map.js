@@ -1,12 +1,12 @@
 import conmap from './conmap.jpg'
 import './pages.css';
+import Map2 from './Map2';
 
 //Maybe using an interactive map with zoom in and zoom out features would be more user accessible
 
 export default function Map() {
     return (
         <>
-        
             <h1>Map</h1>
             <h1tml>
             <header>
@@ -15,7 +15,8 @@ export default function Map() {
             <body>
                 <img class="image" img src={conmap} className="App-map" alt="Img-map" />
             </body>   
-            </h1tml>       
+            </h1tml>   
+            <Map2/>    
         </>
         
     )
