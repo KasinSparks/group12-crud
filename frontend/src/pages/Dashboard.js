@@ -18,7 +18,7 @@ export default function Dashboard() {
         <h1 className="dashHead">Dashboard</h1>
         <DashNavigation/>
         <div className="dashContainer">
-        <h1>The Conneticut Real-Estate Unified Database</h1>
+        <h1>The Connecticut Real-Estate Unified Database</h1>
           <Routes>
             <Route path="/dashboard/residentialdashboard" element={<ResidentialDashboard />} />
             <Route path="/dashboard/residentialdevelopment" element={<ResidentialDevelopment />} />
